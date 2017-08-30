@@ -1,0 +1,355 @@
+소스압축/zenigame.h
+소스압축/zenigame.cpp
+소스압축/tower.h
+소스압축/tower.cpp
+소스압축/startScene.h
+소스압축/startScene.cpp
+소스압축/stageScene.h
+소스압축/stageScene.cpp
+소스압축/shopScene.h
+소스압축/shopScene.cpp
+소스압축/shop.h
+소스압축/shop.cpp
+소스압축/player.h
+소스압축/player.cpp
+소스압축/pikachuBullet.h
+소스압축/pikachuBullet.cpp
+소스압축/pikachu.h
+소스압축/pikachu.cpp
+소스압축/mapToolScene.h
+소스압축/mapToolScene.cpp
+소스압축/mapTool.h
+소스압축/mapTool.cpp
+소스압축/mapInfo.h
+소스압축/longStone.h
+소스압축/longStone.cpp
+소스압축/loadingScene.h
+소스압축/loadingScene.cpp
+소스압축/ggorat.h
+소스압축/ggorat.cpp
+소스압축/fushigidane.h
+소스압축/fushigidane.cpp
+소스압축/fushigiBullet.h
+소스압축/fushigiBullet.cpp
+소스압축/firyBullet.h
+소스압축/firyBullet.cpp
+소스압축/firy.h
+소스압축/firy.cpp
+소스압축/enemy1.h
+소스압축/enemy1.cpp
+소스압축/bullet.h
+소스압축/bullet.cpp
+x64/Release/winMain.obj
+x64/Release/winAPI.tlog/winAPI.lastbuildstate
+x64/Release/winAPI.tlog/link.write.1.tlog
+x64/Release/winAPI.tlog/link.read.1.tlog
+x64/Release/winAPI.tlog/link.command.1.tlog
+x64/Release/winAPI.tlog/CL.write.1.tlog
+x64/Release/winAPI.tlog/CL.read.1.tlog
+x64/Release/winAPI.tlog/CL.command.1.tlog
+x64/Release/winAPI.pdb
+x64/Release/winAPI.pch
+x64/Release/winAPI.log
+x64/Release/winAPI.ipdb
+x64/Release/winAPI.iobj
+x64/Release/winAPI.exe
+x64/Release/vc140.pdb
+x64/Release/uiManager.obj
+x64/Release/txtData.obj
+x64/Release/timeManager.obj
+x64/Release/stdafx.obj
+x64/Release/stateManager.obj
+x64/Release/stateBar.obj
+x64/Release/stageScene.obj
+x64/Release/stageMap.obj
+x64/Release/soundManager.obj
+x64/Release/sceneManager.obj
+x64/Release/progressBar.obj
+x64/Release/mainScene.obj
+x64/Release/mainGame.obj
+x64/Release/loading.obj
+x64/Release/keyManager.obj
+x64/Release/iniData.obj
+x64/Release/imageManager.obj
+x64/Release/image.obj
+x64/Release/gdipImage.obj
+x64/Release/gdiPlusManager.obj
+x64/Release/gameoverScene.obj
+x64/Release/gameNode.obj
+x64/Release/dataBase.obj
+x64/Release/d2dManager.obj
+x64/Release/d2dImage.obj
+x64/Release/character.obj
+x64/Release/FocusManager.obj
+x64/Release/F_monster.obj
+x64/Release/F_loadingScene.obj
+x64/Release/F_TileMapTool.obj
+x64/Release/F_Skill.obj
+x64/Release/F_MAPDATA.obj
+x64/Release/EndingScene.obj
+x64/Release/EndingManager.obj
+x64/Release/CharacterData.obj
+lib/which library do I use.txt
+lib/libfmodexL.a
+lib/libfmodex.a
+lib/fmodex_vc.lib
+lib/fmodex_lcc.lib
+lib/fmodex_bc.lib
+lib/fmodexL_vc.lib
+lib/fmodexL_lcc.lib
+lib/fmodexL_bc.lib
+lib/fmodexL64_vc.lib
+lib/fmodex64_vc.lib
+ipch/WINAPI-9ccf4d03/WINAPI-c8d5764c.ipch
+ini/우선 필요한 세이브 로드...txt
+ini/슬롯5캐릭터.txt
+ini/슬롯5몬스터.txt
+ini/슬롯5.txt
+ini/슬롯4캐릭터.txt
+ini/슬롯4몬스터.txt
+ini/슬롯4.txt
+ini/슬롯3캐릭터.txt
+ini/슬롯3몬스터.txt
+ini/슬롯3.txt
+ini/슬롯2캐릭터.txt
+ini/슬롯2몬스터.txt
+ini/슬롯2.txt
+ini/슬롯1캐릭터.txt
+ini/슬롯1몬스터.txt
+ini/슬롯1.txt
+ini/슬롯0캐릭터.txt
+ini/슬롯0몬스터.txt
+ini/슬롯0.txt
+ini/스테이지3캐릭터.txt
+ini/스테이지3몬스터.txt
+ini/스테이지3.txt
+ini/스테이지2캐릭터.txt
+ini/스테이지2몬스터.txt
+ini/스테이지2.txt
+ini/스테이지1캐릭터.txt
+ini/스테이지1몬스터.txt
+ini/스테이지1.txt
+inc/fmod_output.h
+inc/fmod_memoryinfo.h
+inc/fmod_errors.h
+inc/fmod_dsp.h
+inc/fmod_codec.h
+inc/fmod.hpp
+inc/fmod.h
+image/캐릭터/카린/카린1-3.psd
+image/캐릭터/카린/카린1-2.psd
+image/캐릭터/카린/카린1-1.psd
+image/캐릭터/카린/카린 회피.bmp
+image/캐릭터/카린/카린 피격.bmp
+image/캐릭터/카린/카린 준비.bmp
+image/캐릭터/카린/카린 점프.bmp
+image/캐릭터/카린/카린 이동.bmp
+image/캐릭터/카린/카린 스킬3.bmp
+image/캐릭터/카린/카린 스킬2.bmp
+image/캐릭터/카린/카린 스킬1.bmp
+image/캐릭터/카린/카린 석화.bmp
+image/캐릭터/카린/카린 빙결.bmp
+image/캐릭터/카린/카린 대기.bmp
+image/캐릭터/카린/카린 기절.bmp
+image/캐릭터/카린/카린 공격.bmp
+image/캐릭터/카린/카린 가드.bmp
+image/캐릭터/알/알.psd
+image/캐릭터/알/알 피격.bmp
+image/캐릭터/알/알 준비.bmp
+image/캐릭터/알/알 점프.bmp
+image/캐릭터/알/알 이동.bmp
+image/캐릭터/알/알 스킬1.bmp
+image/캐릭터/알/알 대기.bmp
+image/캐릭터/알/알 기절.bmp
+image/캐릭터/알/알 공격.bmp
+image/캐릭터/알/char_01l.bmp
+image/캐릭터/알/char_01g.bmp
+image/캐릭터/알/char_01f.bmp
+image/캐릭터/알/char_01e.bmp
+image/캐릭터/알/char_01b.bmp
+image/캐릭터/알/char_01a.bmp
+image/캐릭터/아리스/아리스3.psd
+image/캐릭터/아리스/아리스.psd
+image/캐릭터/아리스/아리스 피격.bmp
+image/캐릭터/아리스/아리스 준비.bmp
+image/캐릭터/아리스/아리스 점프.bmp
+image/캐릭터/아리스/아리스 이동.bmp
+image/캐릭터/아리스/아리스 스킬1.bmp
+image/캐릭터/아리스/아리스 대기.bmp
+image/캐릭터/아리스/아리스 기절.bmp
+image/캐릭터/아리스/아리스 공격.bmp
+image/캐릭터/아리스/새 텍스트 문서.txt
+image/캐릭터/아리스/char_02v.bmp
+image/캐릭터/아리스/char_02o.bmp
+image/캐릭터/아리스/char_02m.bmp
+image/캐릭터/아리스/char_02l.bmp
+image/캐릭터/아리스/char_02e.bmp
+image/캐릭터/아리스/char_02b.bmp
+image/캐릭터/아리스/char_02a.bmp
+image/오브젝트2.psd
+image/오브젝트2.bmp
+image/오브젝트.psd
+image/오브젝트.bmp
+image/시스템/화살표2.bmp
+image/시스템/화살표.bmp
+image/시스템/표지판.psd
+image/시스템/표지판.bmp
+image/시스템/폰트.psd
+image/시스템/테두리2.bmp
+image/시스템/테두리.png
+image/시스템/테두리.bmp
+image/시스템/턴종료 선택.bmp
+image/시스템/캐릭터 상태창.psd
+image/시스템/캐릭터 상태창.bmp
+image/시스템/체력바_앞1.bmp
+image/시스템/체력바_뒤1.bmp
+image/시스템/진행바_앞.psd
+image/시스템/진행바_앞.bmp
+image/시스템/진행바_뒤.psd
+image/시스템/진행바_뒤.bmp
+image/시스템/조롱이/스테이지3_배경 - 복사본.jpg
+image/시스템/조롱이/스테이지2_배경 - 복사본.png
+image/시스템/조롱이/스테이지1_배경 - 복사본.jpg
+image/시스템/조롱이/다운로드.jpg
+image/시스템/조롱이/wallpaper-1448732_960_720.jpg
+image/시스템/조롱이/town00 - 복사본.bmp
+image/시스템/조롱이/title2.bmp
+image/시스템/조롱이/system.bmp
+image/시스템/조롱이/skillbook.jpg
+image/시스템/조롱이/number.psd
+image/시스템/조롱이/number.bmp
+image/시스템/조롱이/73d10476678c7974dbb75ff258a9ea5a.jpg
+image/시스템/이동선택.bmp
+image/시스템/엔딩.bmp
+image/시스템/알림 창.psd
+image/시스템/알림 창.bmp
+image/시스템/아이템 선택.bmp
+image/시스템/아이콘 셋.jpg
+image/시스템/아이콘 셋 2.jpg
+image/시스템/승리.bmp
+image/시스템/스테이지3_배경후보.jpg
+image/시스템/스테이지3_배경.jpg
+image/시스템/스테이지2_배경후보.jpg
+image/시스템/스테이지2_배경.png
+image/시스템/스테이지1_배경.jpg
+image/시스템/스킬선택.bmp
+image/시스템/숫자폰트3.bmp
+image/시스템/숫자폰트2.psd
+image/시스템/숫자폰트2.bmp
+image/시스템/숫자폰트1.psd
+image/시스템/숫자폰트1.bmp
+image/시스템/세이브창.bmp
+image/시스템/세이브로드.psd
+image/시스템/세이브.bmp
+image/시스템/세이브 선택2.bmp
+image/시스템/세이브 선택.bmp
+image/시스템/새 텍스트 문서.txt
+image/시스템/새 텍스트 문서 (2).txt
+image/시스템/상태창.psd
+image/시스템/상태창.bmp
+image/시스템/백그라운드.bmp
+image/시스템/배경3.bmp
+image/시스템/배경2.bmp
+image/시스템/배경1.bmp
+image/시스템/방향.psd
+image/시스템/방향.bmp
+image/시스템/마나바_앞.bmp
+image/시스템/마나바_뒤.bmp
+image/시스템/롤 아이콘.jpg
+image/시스템/로드창.bmp
+image/시스템/로드.bmp
+image/시스템/로드 선택2.bmp
+image/시스템/로드 선택.bmp
+image/시스템/도타아이콘셋.jpg
+image/시스템/데미지.txt
+image/시스템/기절.bmp
+image/시스템/그림자.bmp
+image/시스템/경험치창.bmp
+image/시스템/경험치바_앞.bmp
+image/시스템/경험치바_뒤.bmp
+image/시스템/게임오버.bmp
+image/시스템/undo-512.png
+image/시스템/town03.bmp
+image/시스템/town00.bmp
+image/시스템/title.bmp
+image/시스템/system.zip
+image/시스템/system.bmp
+image/시스템/previous-97613_960_720.png
+image/시스템/number.bmp
+image/시스템/grunge-colored-background.jpg
+image/시스템/UI백그라운드.bmp
+image/스킬/힐_산란.bmp
+image/스킬/힐_낙하.bmp
+image/스킬/힐.psd
+image/스킬/플레임버스트.psd
+image/스킬/플레임버스트.bmp
+image/스킬/wall.bmp
+image/스킬/healing.bmp
+image/사용맵타일/st53c.bmp
+image/사용맵타일/st53b.bmp
+image/사용맵타일/st53a.bmp
+image/사용맵타일/st52b.bmp
+image/사용맵타일/st52a.bmp
+image/사용맵타일/st51a.bmp
+image/사용맵타일/st35a.bmp
+image/사용맵타일/st34b.bmp
+image/사용맵타일/st34a.bmp
+image/사용맵타일/snow.bmp
+image/사용맵타일/TileSelectTrue2.bmp
+image/사용맵타일/TileSelectTrue.bmp
+image/사용맵타일/TileSelectFalse2.bmp
+image/사용맵타일/TileSelectFalse.bmp
+image/사용맵타일/StartPoint.bmp
+image/사용맵타일/Grass.bmp
+image/블록4.psd
+image/블록4.bmp
+image/블록3.psd
+image/블록3.bmp
+image/블록2.psd
+image/블록2.bmp
+image/블록.bmp
+image/몬스터/히드라/히드라.psd
+image/몬스터/히드라/히드라 피격.bmp
+image/몬스터/히드라/히드라 점프.bmp
+image/몬스터/히드라/히드라 이동.bmp
+image/몬스터/히드라/히드라 사망.bmp
+image/몬스터/히드라/히드라 대기.bmp
+image/몬스터/히드라/히드라 공격.bmp
+image/몬스터/히드라/char_21e.bmp
+image/몬스터/히드라/char_21b.bmp
+image/몬스터/히드라/char_21a.bmp
+image/몬스터/졸개 a/두목.psd
+image/몬스터/졸개 a/char_18b.bmp
+image/몬스터/졸개 a/char_18a.bmp
+image/몬스터/두목/두목.psd
+image/몬스터/두목/두목 피격.bmp
+image/몬스터/두목/두목 점프.bmp
+image/몬스터/두목/두목 이동.bmp
+image/몬스터/두목/두목 사망.bmp
+image/몬스터/두목/두목 대기.bmp
+image/몬스터/두목/두목 공격.bmp
+image/st52b.bmp
+image/st52a.bmp
+image/st51a.psd
+image/st51a.bmp
+image/TileSelectTrue2.psd
+image/TileSelectTrue2.bmp
+image/TileSelectTrue.psd
+image/TileSelectTrue.bmp
+image/TileSelectFalse2.psd
+image/TileSelectFalse2.bmp
+image/TileSelectFalse.psd
+image/TileSelectFalse.bmp
+image/SnowTile.psd
+image/SnowTile.bmp
+image/GrassTile2.bmp
+image/GrassTile.psd
+image/GrassTile.bmp
+image/Grass.psd
+image/Grass.bmp
+fmod백업파일/fmodex_4_28_08.dll
+fmod백업파일/fmodex_4_28_07.dll
+fmod백업파일/fmodexL.dll
+fmod백업파일/fmodex64.dll
+fmod백업파일/fmodex.dll
+.vs/winAPI/v14/.suo
