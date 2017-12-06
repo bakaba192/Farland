@@ -226,11 +226,6 @@ void F_loadingScene::loadingImage(void)
 	_loading->loadFrameImage("오브젝트", "image/오브젝트.bmp", 640, 128, 10, 2, true, RGB(255, 0, 255));
 	_loading->loadFrameImage("오브젝트2", "image/오브젝트2.bmp", 448, 140, 7, 1, true, RGB(255, 0, 255));
 
-	for (int i = 0; i < 1000; i++)
-	{
-		_loading->loadImage("", 1, 1);
-	}
-	
 }
 
 void F_loadingScene::loadingSound(void)

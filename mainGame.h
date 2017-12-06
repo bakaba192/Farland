@@ -17,6 +17,7 @@
 class mainGame : public gameNode
 {
 private:
+	
 
 public:
 	//ÇÊ¼ö

@@ -1,18 +1,42 @@
 #include "stdafx.h"
 #include "F_MAPDATA.h"
 
+
 HRESULT F_MAPDATA::init(void)
 {
-	_pickI = 0;
-	_pickJ = 0;
+	for (int i = 0; i < TILEMAXI; i++)
+	{
+		for (int j = 0; j < TILEMAXJ; j++)
+		{
+			memset(&_map[i][j], 0, sizeof(tagFarTile));
+
+			_map[i][j].idx.x = i;
+			_map[i][j].idx.y = j;
+		}
+	}
+
+	_pickI = 27;
+	_pickJ = 29;
+
+	_startX = 0;
+	_startY = 0;
+
+	_endX = 0;
+	_endY = 0;
+
+	_vecRange.clear();
+	_openList.clear();
+	_closeList.clear();
+
+	//_stageNumber = -1;
 
 	MAPDATA->setPick(0, 0);
-	
+
 	//_stageNumber = 1;
 
 	//loadMap(_stageNumber);
 
-	FOCUSMANAGER->setBound(-TILEMAXJ * TILEWIDTH/2, TILEMAXJ * TILEWIDTH / 2, -(TILEMAXI)*TILEHEIGHT/2 - WINSIZEY/2, WINSIZEY/2 - TILEHEIGHT);
+	FOCUSMANAGER->setBound(-TILEMAXJ * TILEWIDTH / 2, TILEMAXJ * TILEWIDTH / 2, -(TILEMAXI)*TILEHEIGHT / 2 - WINSIZEY / 2, WINSIZEY / 2 - TILEHEIGHT);
 
 	return S_OK;
 }
@@ -24,38 +48,39 @@ void F_MAPDATA::release(void)
 
 void F_MAPDATA::showMoveRange(int x, int y, int range)
 {
-	for (int i = 0; i < TILEMAXI; i++)
+	for (int i = -range; i <= range; i++)
 	{
-		for (int j = 0; j < TILEMAXJ; j++)
+		for (int j = -range; j <= range; j++)
 		{
-			if (i == x && j == y)
+			int tx = x + i;
+			int ty = y + j;
+			
+			if (abs(i) + abs(j) > range) continue;
+			if (tx < 0 || tx >= TILEMAXI) continue;
+			if (ty < 0 || ty >= TILEMAXJ) continue;
+			if (_map[tx][ty].wayState == WAYSTATE::WAY_BLOCK) continue;
+
+			if (tx == x && ty == y)
 			{
-				_map[i][j].tSELECT = S_TRUE2;
+				_map[tx][ty].tSELECT = S_TRUE2;
 			}
 
-			if (abs(x - i) + abs(y - j) <= range)
+			this->initAstar(x, y, tx, ty);
+			_vecRange.clear();
+
+			_vecRange = this->Astar();
+
+			if (_vecRange.size() != 0 && _vecRange.size() <= range)
 			{
-				this->initAstar(x, y, i, j);
-
-				while (!_rangeStack.empty())
-				{
-					_rangeStack.pop_back();
-				}
-
-				_rangeStack = this->Astar();
-
-				if (_rangeStack.size() != 0 && _rangeStack.size() <= range)
-				{
-					_map[i][j].tSELECT = S_TRUE2;
-				}
+				_map[tx][ty].tSELECT = S_TRUE2;
 			}
 		}
 	}
 }
 
-void F_MAPDATA::showSkillrange(int x, int y, int range, bool isHeal)
+void F_MAPDATA::showSkillrange(int x, int y, int range, bool isAttack)
 {
-	if (!isHeal)
+	if (isAttack)
 	{
 		for (int i = 0; i < TILEMAXI; i++)
 		{
@@ -85,7 +110,6 @@ void F_MAPDATA::showSkillrange(int x, int y, int range, bool isHeal)
 	}
 }
 
-
 void F_MAPDATA::unShowRange()
 {
 	for (int i = 0; i < TILEMAXI; i++)
@@ -99,24 +123,26 @@ void F_MAPDATA::unShowRange()
 
 void F_MAPDATA::initAstar(int startX, int startY, int destX, int destY)
 {
+	_openList.clear();
+	_closeList.clear();
+
 	for (int i = 0; i < TILEMAXI; i++)
 	{
 		for (int j = 0; j < TILEMAXJ; j++)
 		{
-			_map[i][j].idx.x = i;
-			_map[i][j].idx.y = j;
-			_map[i][j].AstarF = 0;
-			_map[i][j].AstarH = 0;
-			_map[i][j].AstarG = 0;
 
-			//_map[i][j].isOpen = true;
-			_map[i][j].isOpenList = false;
+			_map[i][j].AstarH = abs(i - destX) + abs(j - destY);
+			_map[i][j].AstarG = 0;
+			_map[i][j].AstarF = _map[i][j].AstarH;
 
 			_map[i][j].parentNode = nullptr;
+
+			if (_map[i][j].wayState != WAYSTATE::WAY_BLOCK)
+			{
+				_map[i][j].wayState = WAYSTATE::WAY_EMPTY;
+			}
 		}
 	}
-	_isFind = false;
-	_isNoWay = false;
 
 	_startX = startX;
 	_startY = startY;
@@ -124,220 +150,101 @@ void F_MAPDATA::initAstar(int startX, int startY, int destX, int destY)
 	_endX = destX;
 	_endY = destY;
 
-	//우선 벡터에 경로를 담은후 빼면서 넣는다
-
-	_closeIndex = 0;
-
-	_currentX = _startX;
-	_currentY = _startY;
-	_currentG = 0;
-
-	while (!_roadStack.empty())
-	{
-		_roadStack.pop_back();
-	}
-	_closeList.clear();
-	_openList.clear();
-
-
-	_closeList.push_back(&_map[_currentX][_currentY]);
-	_closeList[_closeIndex]->isOpen = false;//오픈리스트에 있는가?
-
+	_openList.insertNode(&_map[startX][startY]);
+	_map[startX][startY].wayState = WAYSTATE::WAY_OPEN; //오픈리스트에 들어감.
 }
 
 vector<POINT> F_MAPDATA::Astar()
 {
-	while (true)
-	{
-		_currentX = _closeList[_closeIndex]->idx.x;
-		_currentY = _closeList[_closeIndex]->idx.y;
-		_currentG = _closeList[_closeIndex]->AstarG;
+	vector<POINT> vecBestWay;
+	vecBestWay.clear();
 
-		if (_currentX > 0)
+	while (1)
+	{
+		//===============================성공검사=====================================//
+		if (_openList.isEmpty())
 		{
-			if (_map[_currentX - 1][_currentY].isOpen)
+			vecBestWay.clear();
+			break;
+		}
+
+		if (!_closeList.empty())
+		{
+			if (_closeList.back()->idx.x == _endX && _closeList.back()->idx.y == _endY)
 			{
-				if (!_map[_currentX - 1][_currentY].isOpenList &&
-					abs(_map[_currentX][_currentY].z - _map[_currentX - 1][_currentY].z) < 3)
+				POINT temp = { 0,0 };
+				tagFarTile* tempTile = _closeList.back();
+				
+				if (_closeList.size() == 1)
 				{
-					_map[_currentX - 1][_currentY].isOpenList = true;
-					_map[_currentX - 1][_currentY].AstarG = _currentG + BLINE;
-					_map[_currentX - 1][_currentY].parentNode = _closeList[_closeIndex];
-					_openList.push_back(&_map[_currentX - 1][_currentY]);
+					temp.x = tempTile->idx.x - _startX;
+					temp.x = tempTile->idx.y - _startY;
+					vecBestWay.push_back(temp);
 				}
 				else
 				{
-					if (_currentG + BLINE < _map[_currentX - 1][_currentY].AstarG
-						&& abs(_map[_currentX][_currentY].z - _map[_currentX - 1][_currentY].z) < 3)
+					while (true)
 					{
-						_map[_currentX - 1][_currentY].AstarG = _currentG + BLINE;
-						_map[_currentX - 1][_currentY].parentNode = _closeList[_closeIndex];
+						temp.x = (tempTile->idx.x - tempTile->parentNode->idx.x);
+						temp.y = (tempTile->idx.y - tempTile->parentNode->idx.y);
+
+						vecBestWay.push_back(temp);
+
+						tempTile = tempTile->parentNode;
+						if (tempTile->parentNode == nullptr) break;
+					}
+				}
+				break;
+			}
+		}
+		//==============================================================================//
+
+		//가장 유망한 노드를 오픈리스트에서 제거하고 클로즈리스트에 추가한다.
+		tagFarTile* tempNode = _openList.popRootNode();
+		tempNode->wayState = WAYSTATE::WAY_CLOSE;
+		_closeList.push_back(tempNode);
+
+		//오픈리스트를 확장한다.
+		for (int i = -1; i <= 1; i++)
+		{
+			for (int j = -1; j <= 1; j++)
+			{
+				int tx = tempNode->idx.x + i;
+				int ty = tempNode->idx.y + j;
+
+				if (i == 0 && j == 0) continue;	//현재 노드 검사 안함.
+				if (abs(i) + abs(j) == 2) continue;//대각방향 검사 안함.
+				if (tx < 0 || tx >= TILEMAXI) continue;
+				if (ty < 0 || ty >= TILEMAXJ) continue;
+				if (_map[tx][ty].wayState == WAYSTATE::WAY_BLOCK) continue;
+				if (_map[tx][ty].wayState == WAYSTATE::WAY_CLOSE) continue;
+
+				//오픈리스트에 없음.
+				if (_map[tx][ty].wayState == WAYSTATE::WAY_EMPTY)
+				{
+					_map[tx][ty].AstarG = tempNode->AstarG + 1;
+					_map[tx][ty].AstarF = _map[tx][ty].AstarG + _map[tx][ty].AstarH;
+					_map[tx][ty].wayState = WAYSTATE::WAY_OPEN;
+					_map[tx][ty].parentNode = tempNode;
+					_openList.insertNode(&_map[tx][ty]);
+					
+				}
+				else
+				{
+					//만약 새로운 부모가 더 낮은 F값을 갖게 한다면
+					//F값을 갱신하고 부모를 바꾼다.
+					if (_map[tx][ty].AstarG > tempNode->AstarG + 1)
+					{
+						_map[tx][ty].AstarG = tempNode->AstarG + 1;
+						_map[tx][ty].AstarF = _map[tx][ty].AstarG + _map[tx][ty].AstarH;
+						_map[tx][ty].parentNode = tempNode;
 					}
 				}
 			}
 		}
-
-		if (_currentX < TILEMAXI - 1)
-		{
-			if (_map[_currentX + 1][_currentY].isOpen)
-			{
-				if (!_map[_currentX + 1][_currentY].isOpenList &&
-					abs(_map[_currentX][_currentY].z - _map[_currentX + 1][_currentY].z) < 3)
-				{
-					_map[_currentX + 1][_currentY].isOpenList = true;
-					_map[_currentX + 1][_currentY].AstarG = _currentG + BLINE;
-					_map[_currentX + 1][_currentY].parentNode = _closeList[_closeIndex];
-					_openList.push_back(&_map[_currentX + 1][_currentY]);
-				}
-				else
-				{
-					if (_currentG + BLINE < _map[_currentX + 1][_currentY].AstarG &&
-						abs(_map[_currentX][_currentY].z - _map[_currentX & 1][_currentY].z) < 3)
-					{
-						_map[_currentX + 1][_currentY].AstarG = _currentG + BLINE;
-						_map[_currentX + 1][_currentY].parentNode = _closeList[_closeIndex];
-					}
-				}
-			}
-		}
-
-		if (_currentY > 0)
-		{
-			if (_map[_currentX][_currentY - 1].isOpen)
-			{
-				if (!_map[_currentX][_currentY - 1].isOpenList &&
-					abs(_map[_currentX][_currentY].z - _map[_currentX][_currentY - 1].z) < 3)
-				{
-					_map[_currentX][_currentY - 1].isOpenList = true;
-					_map[_currentX][_currentY - 1].AstarG = _currentG + BLINE;
-					_map[_currentX][_currentY - 1].parentNode = _closeList[_closeIndex];
-					_openList.push_back(&_map[_currentX][_currentY - 1]);
-				}
-				else
-				{
-					if (_currentG + BLINE < _map[_currentX][_currentY - 1].AstarG &&
-						abs(_map[_currentX][_currentY].z - _map[_currentX][_currentY - 1].z) < 3)
-					{
-						_map[_currentX][_currentY - 1].AstarG = _currentG + BLINE;
-						_map[_currentX][_currentY - 1].parentNode = _closeList[_closeIndex];
-					}
-				}
-			}
-		}
-
-		if (_currentY < TILEMAXI - 1)
-		{
-			if (_map[_currentX][_currentY + 1].isOpen)
-			{
-				if (!_map[_currentX][_currentY + 1].isOpenList &&
-					abs(_map[_currentX][_currentY].z - _map[_currentX][_currentY + 1].z) < 3)
-				{
-					_map[_currentX][_currentY + 1].isOpenList = true;
-					_map[_currentX][_currentY + 1].AstarG = _currentG + BLINE;
-					_map[_currentX][_currentY + 1].parentNode = _closeList[_closeIndex];
-					_openList.push_back(&_map[_currentX][_currentY + 1]);
-				}
-				else
-				{
-					if (_currentG + BLINE < _map[_currentX][_currentY + 1].AstarG &&
-						abs(_map[_currentX][_currentY].z - _map[_currentX][_currentY + 1].z) < 3)
-					{
-						_map[_currentX][_currentY + 1].AstarG = _currentG + BLINE;
-						_map[_currentX][_currentY + 1].parentNode = _closeList[_closeIndex];
-					}
-				}
-			}
-		}
-
-		calculateH();
-		calculateF();
-		selectNext();
-
-		if (_isNoWay)
-		{
-			while (!_roadStack.empty())
-			{
-				_roadStack.pop_back();
-			}
-			return _roadStack;
-		}
-
-		if (_isFind)
-		{
-			POINT temp = { 0,0 };
-			tagFarTile* tempTile = _closeList[_closeIndex];
-
-			while (true)
-			{
-
-				temp.x = (tempTile->idx.x - tempTile->parentNode->idx.x);
-				temp.y = (tempTile->idx.y - tempTile->parentNode->idx.y);
-
-
-				_roadStack.push_back(temp); // (0,1)/(1,0)/(0,-1)/(-1,0)
-
-				tempTile = tempTile->parentNode;
-
-				if (tempTile->parentNode == nullptr)
-				{
-					return _roadStack;
-				}
-			}
-		}
-	}
-}
-
-void F_MAPDATA::calculateH()
-
-{
-	for (int i = 0; i < _openList.size(); i++)
-	{
-		int v = (_endX - _openList[i]->idx.x) * BLINE;
-		int h = (_endY - _openList[i]->idx.y) * BLINE;
-
-		_openList[i]->AstarH = abs(v) + abs(h);
-	}
-}
-
-void F_MAPDATA::calculateF()
-{
-	for (int i = 0; i < _openList.size(); i++)
-	{	//F = G + H
-		_openList[i]->AstarF = _openList[i]->AstarH + _openList[i]->AstarG;
-	}
-}
-
-void F_MAPDATA::selectNext()
-{
-	if (_openList.size() == 0)
-	{
-		_isNoWay = true;
-		return;
 	}
 
-	int minimum = 5000;
-	int index;
-
-	for (int i = 0; i < _openList.size(); i++)
-	{	//F = G + H
-		if (_openList[i]->AstarF < minimum)
-		{
-			minimum = _openList[i]->AstarF;
-			index = i;
-		}
-	}
-
-
-	_closeList.push_back(_openList[index]);
-	_closeIndex++;
-	_openList.erase(_openList.begin() + index);
-
-	if (_closeList[_closeIndex]->idx.x == _endX && _closeList[_closeIndex]->idx.y == _endY)
-	{
-		_isFind = true;
-		return;
-	}
-	return;
+	return vecBestWay;
 }
 
 void F_MAPDATA::loadMap(int i)
@@ -379,13 +286,9 @@ void F_MAPDATA::loadMap(int i)
 			_map[i][j].poly[3] = { MAPDATA->getTileData(i,j)->pivotX, MAPDATA->getTileData(i,j)->pivotY + TILEHEIGHT / 2 }; //bottom
 			_map[i][j].classify = CL_NONE;//거기에 무엇이 있는가?
 			_map[i][j].tSELECT = S_NONE;//타일의 선택상태
-			if (_map[i][j].objIndex2 == OBJ2_NULL)
+			if (_map[i][j].objIndex2 != OBJ2_NULL)
 			{
-				_map[i][j].isOpen = true;
-			}
-			else
-			{
-				_map[i][j].isOpen = false;
+				_map[i][j].wayState = WAYSTATE::WAY_BLOCK;
 			}
 		}
 	}

@@ -579,11 +579,7 @@ void F_TileMapTool::setTileType() {
 			MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->objIndex2 = _selectedObject;
 			if (MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->objIndex2 != OBJ2_NULL)
 			{
-				MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->isOpen = false;
-			}
-			else
-			{
-				MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->isOpen = true;
+				MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->wayState = WAYSTATE::WAY_BLOCK;
 			}
 			return;
 		}

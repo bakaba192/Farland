@@ -3,6 +3,8 @@
 #include "CharacterAttribute.h"
 #include "F_Skill.h"
 
+//올드버전 캐릭터 클래스
+//
 class character : public gameNode
 {
 private:
@@ -17,7 +19,7 @@ private:
 	charaState _state;
 	charaState _preState;
 
-	CharaName _cName;				//에넘타입 이름.
+	CharaName _cName;				//열거형 이름.
 
 	string _charaName;				//스트링 네임
 
@@ -36,10 +38,7 @@ private:
 	int _moveCount;					//이동의 절반지점을 찾는 카운터
 	int _jumpCount;					//점프이동에 사용할 카운터
 
-	
-
-
-	vector<POINT> _way;				//진행할 경로 a스타알고리즘의 반환을 저장함. 몬스터의 경우 이 WAY를 저장하는	
+	vector<POINT> _way;				//진행할 경로 a스타알고리즘의 반환을 저장함.
 
 	RECT _MoveRc;
 

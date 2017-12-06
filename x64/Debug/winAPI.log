@@ -1,0 +1,145 @@
+﻿  stdafx.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\commonmacrofunction.h(148): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(36): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(59): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(80): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(90): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(91): warning C4244: '초기화 중': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(102): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(138): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(139): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(141): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(193): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(194): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(216): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\trigonometricfunction.h(217): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  winMain.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\winmain.cpp(163): warning C4244: 'return': 'WPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  uiManager.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\uimanager.cpp(85): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\uimanager.cpp(104): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\uimanager.cpp(148): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\uimanager.cpp(148): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  txtData.cpp
+  timeManager.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\timemanager.cpp(116): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\timemanager.cpp(119): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\timemanager.cpp(122): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\timemanager.cpp(125): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  stateManager.cpp
+  stateBar.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(35): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(36): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(37): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(22): warning C4101: 'backImage' :참조되지 않은 지역 변수입니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(21): warning C4101: 'frontImage' :참조되지 않은 지역 변수입니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\statebar.cpp(56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  stageScene.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(210): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(212): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(213): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(233): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(234): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(247): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(266): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(269): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(1376): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(1377): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(1392): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(1393): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\stagescene.cpp(1580): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  stageMap.cpp
+  soundManager.cpp
+  sceneManager.cpp
+  progressBar.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\progressbar.cpp(13): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\progressbar.cpp(14): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\progressbar.cpp(30): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\progressbar.cpp(31): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\progressbar.cpp(54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  mainScene.cpp
+  mainGame.cpp
+  loading.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(45): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(46): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(81): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(82): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(228): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(242): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(254): warning C4244: '인수': 'unsigned __int64'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(254): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\loading.cpp(265): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  keyManager.cpp
+  iniData.cpp
+  imageManager.cpp
+  image.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(119): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(162): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(209): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(258): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(403): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(408): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(493): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(507): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(511): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(755): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(790): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\image.cpp(795): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  gdipImage.cpp
+  gdiPlusManager.cpp
+  코드를 생성하고 있습니다...
+c:\users\user\desktop\완성포폴\파랜드깃\inidata.cpp(117): warning C4172: 지역 변수 또는 임시: data의 주소를 반환하고 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\inidata.cpp(150): warning C4172: 지역 변수 또는 임시: data의 주소를 반환하고 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\txtdata.cpp(40): warning C4172: 지역 변수 또는 임시: str의 주소를 반환하고 있습니다.
+  컴파일하고 있습니다...
+  gameoverScene.cpp
+  gameNode.cpp
+  dataBase.cpp
+  d2dManager.cpp
+  d2dImage.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\d2dimage.cpp(325): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\d2dimage.cpp(361): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\d2dimage.cpp(411): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\d2dimage.cpp(461): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\d2dimage.cpp(471): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  character.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\character.cpp(750): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\character.cpp(750): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  cUnitState.cpp
+  cUnit.cpp
+  cMapTool.cpp
+  cMap.cpp
+  cHeap.cpp
+  FocusManager.cpp
+  F_monster.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\f_monster.cpp(487): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\f_monster.cpp(487): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  F_loadingScene.cpp
+  F_TileMapTool.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\f_tilemaptool.cpp(112): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\f_tilemaptool.cpp(113): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\f_tilemaptool.cpp(908): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\desktop\완성포폴\파랜드깃\f_tilemaptool.cpp(914): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  F_Skill.cpp
+  F_MAPDATA.cpp
+c:\users\user\desktop\완성포폴\파랜드깃\cheap.h(47): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  c:\users\user\desktop\완성포폴\파랜드깃\cheap.h(42): note: 클래스 템플릿 멤버 함수 'tagFarTile *cHeap<tagFarTile>::popRootNode(void)'을(를) 컴파일하고 있습니다.
+  c:\users\user\desktop\완성포폴\파랜드깃\f_mapdata.cpp(201): note: 컴파일 중인 함수 템플릿 인스턴스화 'tagFarTile *cHeap<tagFarTile>::popRootNode(void)'에 대한 참조를 확인하십시오.
+c:\users\user\desktop\완성포폴\파랜드깃\cheap.h(59): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  c:\users\user\desktop\완성포폴\파랜드깃\cheap.h(57): note: 클래스 템플릿 멤버 함수 'void cHeap<tagFarTile>::insertNode(T *)'을(를) 컴파일하고 있습니다.
+          with
+          [
+              T=tagFarTile
+          ]
+  c:\users\user\desktop\완성포폴\파랜드깃\f_mapdata.cpp(152): note: 컴파일 중인 함수 템플릿 인스턴스화 'void cHeap<tagFarTile>::insertNode(T *)'에 대한 참조를 확인하십시오.
+          with
+          [
+              T=tagFarTile
+          ]
+  EndingScene.cpp
+  EndingManager.cpp
+  CharacterData.cpp
+  코드를 생성하고 있습니다...
+  winAPI.vcxproj -> C:\Users\User\Desktop\완성포폴\파랜드깃\x64\Debug\winAPI.exe
+  winAPI.vcxproj -> C:\Users\User\Desktop\완성포폴\파랜드깃\x64\Debug\winAPI.pdb (Partial PDB)

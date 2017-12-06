@@ -1088,7 +1088,7 @@ void stageScene::playerBehavior()//플레이어의 행동을 상태값에따라 제어하는 함수
 				{
 					if (abs(_selectedMonster->getPosX() - (_selectedChara->getPosX() + 1)) + abs(_selectedMonster->getPosY() - _selectedChara->getPosY())
 						< abs(_selectedMonster->getPosX() - minXY.x) + abs(_selectedMonster->getPosY() - minXY.y) &&
-						MAPDATA->getTileData(_selectedChara->getPosX() + 1, _selectedChara->getPosY())->isOpen)
+						MAPDATA->getTileData(_selectedChara->getPosX() + 1, _selectedChara->getPosY())->wayState != WAYSTATE::WAY_BLOCK)
 					{
 						minXY.x = _selectedChara->getPosX() + 1;
 						minXY.y = _selectedChara->getPosY();
@@ -1100,7 +1100,7 @@ void stageScene::playerBehavior()//플레이어의 행동을 상태값에따라 제어하는 함수
 				{
 					if (abs(_selectedMonster->getPosX() - (_selectedChara->getPosX() - 1)) + abs(_selectedMonster->getPosY() - _selectedChara->getPosY())
 						< abs(_selectedMonster->getPosX() - minXY.x) + abs(_selectedMonster->getPosY() - minXY.y) &&
-						MAPDATA->getTileData(_selectedChara->getPosX() - 1, _selectedChara->getPosY())->isOpen)
+						MAPDATA->getTileData(_selectedChara->getPosX() - 1, _selectedChara->getPosY())->wayState != WAYSTATE::WAY_BLOCK)
 					{
 						minXY.x = _selectedChara->getPosX() - 1;
 						minXY.y = _selectedChara->getPosY();
@@ -1112,7 +1112,7 @@ void stageScene::playerBehavior()//플레이어의 행동을 상태값에따라 제어하는 함수
 				{
 					if (abs(_selectedMonster->getPosX() - (_selectedChara->getPosX())) + abs(_selectedMonster->getPosY() - (_selectedChara->getPosY() + 1))
 						< abs(_selectedMonster->getPosX() - minXY.x) + abs(_selectedMonster->getPosY() - minXY.y) &&
-						MAPDATA->getTileData(_selectedChara->getPosX(), _selectedChara->getPosY() + 1)->isOpen)
+						MAPDATA->getTileData(_selectedChara->getPosX(), _selectedChara->getPosY() + 1)->wayState != WAYSTATE::WAY_BLOCK)
 					{
 						minXY.x = _selectedChara->getPosX();
 						minXY.y = _selectedChara->getPosY() + 1;
@@ -1124,7 +1124,7 @@ void stageScene::playerBehavior()//플레이어의 행동을 상태값에따라 제어하는 함수
 				{
 					if (abs(_selectedMonster->getPosX() - (_selectedChara->getPosX())) + abs(_selectedMonster->getPosY() - (_selectedChara->getPosY() - 1))
 						< abs(_selectedMonster->getPosX() - minXY.x) + abs(_selectedMonster->getPosY() - minXY.y) &&
-						MAPDATA->getTileData(_selectedChara->getPosX(), _selectedChara->getPosY() - 1)->isOpen)
+						MAPDATA->getTileData(_selectedChara->getPosX(), _selectedChara->getPosY() - 1)->wayState != WAYSTATE::WAY_BLOCK)
 					{
 						minXY.x = _selectedChara->getPosX();
 						minXY.y = _selectedChara->getPosY() - 1;
@@ -1362,7 +1362,7 @@ bool stageScene::showMeleeAttackRange(int i, int j)
 
 void stageScene::showCharaState()
 {
-	if (MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->isOpen == false)
+	if (MAPDATA->getTileData(MAPDATA->getPickI(), MAPDATA->getPickJ())->wayState == WAYSTATE::WAY_BLOCK)
 	{
 		//장애물, 혹은 뭔가가 있음.
 		for (int i = 0; i < _vCharacter.size(); i++)

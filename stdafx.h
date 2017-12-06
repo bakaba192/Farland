@@ -39,6 +39,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <list>
+#include <stack>
 
 using namespace std;
 
@@ -80,9 +82,39 @@ using namespace Gdiplus;
 using namespace D2D1;
 
 
+
+
+#define SYNTHESIZE(varType, varName, funName)\
+protected: varType varName;\
+public: inline varType Get##funName(void) const { return varName; }\
+public: inline void Set##funName(varType var){ varName = var; }
+
+#define SYNTHESIZE_PASS_BY_REF(varType, varName, funName)\
+protected: varType varName;\
+public: inline varType& Get##funName(void) { return varName; }\
+public: inline void Set##funName(const varType& var){ varName = var; }
+
+#define SYNTHESIZE_ADD_REF(varType, varName, funName)\
+protected: varType varName;\
+public: inline varType Get##funName(void) { return varName; }\
+public: inline void Set##funName(varType var)\
+{\
+if (varName != var)\
+{\
+	SAFE_RELEASE(varName);\
+	SAFE_ADD_REF(var);\
+	varName = var;\
+}\
+}
+
+
+
+
+
 //=================================================================================================
-//	##	개인 헤드 파일	##
+//	## 헤더 파일 ##
 //=================================================================================================
+
 
 #include "commonMacroFunction.h"
 #include "keyManager.h"
@@ -102,6 +134,7 @@ using namespace D2D1;
 #include "uiManager.h"
 #include "CharacterData.h"
 #include "EndingManager.h"
+
 
 
 //=================================================================================================

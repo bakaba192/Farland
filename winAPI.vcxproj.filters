@@ -183,6 +183,11 @@
     <ClInclude Include="EndingScene.h">
       <Filter>MainGame\씬</Filter>
     </ClInclude>
+    <ClInclude Include="cUnit.h" />
+    <ClInclude Include="cUnitState.h" />
+    <ClInclude Include="cMap.h" />
+    <ClInclude Include="cHeap.h" />
+    <ClInclude Include="cMapTool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winMain.cpp">
@@ -293,5 +298,10 @@
     <ClCompile Include="EndingScene.cpp">
       <Filter>MainGame\씬</Filter>
     </ClCompile>
+    <ClCompile Include="cUnit.cpp" />
+    <ClCompile Include="cUnitState.cpp" />
+    <ClCompile Include="cMap.cpp" />
+    <ClCompile Include="cHeap.cpp" />
+    <ClCompile Include="cMapTool.cpp" />
   </ItemGroup>
 </Project>

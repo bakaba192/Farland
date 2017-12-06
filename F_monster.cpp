@@ -18,6 +18,9 @@ HRESULT F_monster::init(int x, int y, MonsterName name, int lv)
 		break;
 	}
 
+	_targetPoint.y = NULL;
+	_targetPoint.x = NULL;
+
 	ZeroMemory(&_mStatus, sizeof(MonsterStatus));
 	_mStatus.isReadyToBehavior = true;
 	_mStatus.isReadyToMove = true;
@@ -36,7 +39,7 @@ HRESULT F_monster::init(int x, int y, MonsterName name, int lv)
 	_mState = M_READY;//몬스터 레디. = 대기
 	_mPreState = M_READY;
 
-	MAPDATA->getTileData(x, y)->isOpen = false;
+	MAPDATA->getTileData(x, y)->wayState = WAYSTATE::WAY_BLOCK;
 
 
 	_tempForward = 0;				//임시적으로 캐릭터가 가질 방향
@@ -182,7 +185,7 @@ void F_monster::behaviorByState()
 		}
 		break;
 	case M_DEATH:
-		MAPDATA->getTileData(_indexX, _indexY)->isOpen = true;
+		MAPDATA->getTileData(_indexX, _indexY)->wayState = WAYSTATE::WAY_EMPTY;
 
 		if (_mStatus.count % 10 == 0)
 		{
@@ -253,7 +256,6 @@ void F_monster::showCharaByState()
 
 void F_monster::moveToWay()
 {
-	int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 	if (_moveOn == false)
 	{
 		if (!_way.empty())
@@ -280,12 +282,11 @@ void F_monster::moveToWay()
 					}
 				}
 			}
-			//z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 		}
 		else
 		{
-			MAPDATA->getTileData(MAPDATA->getStartX(), MAPDATA->getStartY())->isOpen = true;
-			MAPDATA->getTileData(_indexX, _indexY)->isOpen = false;
+			MAPDATA->getTileData(MAPDATA->getStartX(), MAPDATA->getStartY())->wayState = WAYSTATE::WAY_EMPTY;
+			MAPDATA->getTileData(_indexX, _indexY)->wayState = WAYSTATE::WAY_BLOCK;
 			_mState = M_READY;
 		}
 	}
@@ -323,7 +324,7 @@ void F_monster::moveToWay()
 
 			if (_moveCount == 4)
 			{
-				//int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
+				int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 				if (z == 1 || z == -1)
 				{
 					_MoveRc = RectMake(_MoveRc.left, _MoveRc.top + z * 16, TILEWIDTH, TILEHEIGHT);

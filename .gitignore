@@ -1,4 +1,4 @@
-소스압축/zenigame.h
+﻿소스압축/zenigame.h
 소스압축/zenigame.cpp
 소스압축/tower.h
 소스압축/tower.cpp
@@ -353,3 +353,6 @@ fmod백업파일/fmodexL.dll
 fmod백업파일/fmodex64.dll
 fmod백업파일/fmodex.dll
 .vs/winAPI/v14/.suo
+*.ipch
+*.pch
+*.db

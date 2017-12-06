@@ -29,6 +29,9 @@ HRESULT character::init(int x, int y, CharaName name, int lv)
 		break;
 	}
 
+	_targetPoint.y = NULL;
+	_targetPoint.x = NULL;
+
 	_indexX = x;					//타일상의 위치. i, j
 	_indexY = y;
 
@@ -70,7 +73,7 @@ HRESULT character::init(int x, int y, CharaName name, int lv)
 	_status.range = 1;
 	
 
-	MAPDATA->getTileData(_indexX, _indexY)->isOpen = false;
+	MAPDATA->getTileData(_indexX, _indexY)->wayState = WAYSTATE::WAY_BLOCK;
 
 
 	//데미지출력용
@@ -528,7 +531,6 @@ void character::showCharaByState()
 
 void character::moveToWay()
 {
-	int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 	if (_moveOn == false)
 	{
 		if (!_way.empty())
@@ -539,12 +541,11 @@ void character::moveToWay()
 			_way.pop_back();
 			_moveOn = true;
 			_moveCount = 0;
-			//z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 		}
 		else
 		{
-			MAPDATA->getTileData(MAPDATA->getStartX(), MAPDATA->getStartY())->isOpen = true;
-			MAPDATA->getTileData(MAPDATA->getEndX(), MAPDATA->getEndY())->isOpen = false;
+			MAPDATA->getTileData(MAPDATA->getStartX(), MAPDATA->getStartY())->wayState = WAYSTATE::WAY_EMPTY;
+			MAPDATA->getTileData(MAPDATA->getEndX(), MAPDATA->getEndY())->wayState = WAYSTATE::WAY_BLOCK;
 			_state = C_READY;
 		}
 	}
@@ -582,7 +583,7 @@ void character::moveToWay()
 
 			if (_moveCount == 4)
 			{
-				//int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
+				int z = MAPDATA->getTileData(_indexX, _indexY)->z - MAPDATA->getTileData(_targetPoint.x, _targetPoint.y)->z;
 				if (z == 1 || z == -1)
 				{
 					_MoveRc = RectMake(_MoveRc.left, _MoveRc.top + z * 16, TILEWIDTH, TILEHEIGHT);
