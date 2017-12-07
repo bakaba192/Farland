@@ -10,7 +10,7 @@ HRESULT stageMap::init()
 
 	x = 0;
 	y = 0;
-	
+
 	MAPDATA->loadMap(MAPDATA->getStageNumber());
 
 	return S_OK;
@@ -24,9 +24,11 @@ void stageMap::update(void)
 {
 	FOCUSMANAGER->FocusByMouse();
 
-	pickTile();
+	//pickTile();
 
-	setTilePosUpdate();
+	MAPDATA->pickTile();
+
+	//setTilePosUpdate();
 }
 
 void stageMap::render(void)
@@ -44,16 +46,16 @@ void stageMap::setTilePosUpdate()
 			MAPDATA->getTileData(i,j)->pivotX = MAPDATA->getTileData(i,j)->x + TILEWIDTH / 2;
 			MAPDATA->getTileData(i,j)->pivotY = MAPDATA->getTileData(i,j)->y + TILEHEIGHT / 2;*/
 
-			MAPDATA->getTileData(i, j)->rc = RectMake(MAPDATA->getTileData(i, j)->x,
-				MAPDATA->getTileData(i, j)->y - MAPDATA->getTileData(i, j)->z * 16,
-				TILEWIDTH,
-				TILEHEIGHT);
+			//MAPDATA->getTileData(i, j)->rc = RectMake(MAPDATA->getTileData(i, j)->x,
+			//	MAPDATA->getTileData(i, j)->y - MAPDATA->getTileData(i, j)->z * 16,
+			//	TILEWIDTH,
+			//	TILEHEIGHT);
 			//MAPDATA->getTileData(i,j)->z = 0;//높이값
 			//MAPDATA->getTileData(i,j)->TileNumValue = 0;
-			MAPDATA->getTileData(i, j)->poly[0] = { MAPDATA->getTileData(i,j)->pivotX - TILEWIDTH / 2 + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //left
-			MAPDATA->getTileData(i, j)->poly[1] = { MAPDATA->getTileData(i,j)->pivotX + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - TILEHEIGHT / 2 - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //top
-			MAPDATA->getTileData(i, j)->poly[2] = { MAPDATA->getTileData(i,j)->pivotX + TILEWIDTH / 2 + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //right
-			MAPDATA->getTileData(i, j)->poly[3] = { MAPDATA->getTileData(i,j)->pivotX + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY + TILEHEIGHT / 2 - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //bottom
+			//MAPDATA->getTileData(i, j)->poly[0] = { MAPDATA->getTileData(i,j)->pivotX - TILEWIDTH / 2 + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //left
+			//MAPDATA->getTileData(i, j)->poly[1] = { MAPDATA->getTileData(i,j)->pivotX + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - TILEHEIGHT / 2 - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //top
+			//MAPDATA->getTileData(i, j)->poly[2] = { MAPDATA->getTileData(i,j)->pivotX + TILEWIDTH / 2 + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //right
+			//MAPDATA->getTileData(i, j)->poly[3] = { MAPDATA->getTileData(i,j)->pivotX + FOCUSMANAGER->getFocusX(), MAPDATA->getTileData(i,j)->pivotY + TILEHEIGHT / 2 - MAPDATA->getTileData(i,j)->z * 16 + FOCUSMANAGER->getFocusY() - MAPDATA->getTileData(i,j)->objectZ }; //bottom
 		}
 	}
 }
@@ -63,30 +65,49 @@ void stageMap::showBlock(int i, int j)
 	/*
 		if (!IntersectRect(&rc, &MAPDATA->getTileData(i, j)->rc, &_clipingRc)) return;
 		else*/
+
+	int minZ = 0;
+	int delta = 0;
+	if (i == 29 || j == 29)
 	{
-		for (int a = 0; a < MAPDATA->getTileData(i, j)->z; a++)
+		minZ = 0;
+	}
+	else
+	{
+		if (MAPDATA->getTileData(i + 1, j)->z < MAPDATA->getTileData(i, j + 1)->z)
 		{
-			switch (MAPDATA->getTileData(i, j)->tileT)
+			minZ = MAPDATA->getTileData(i + 1, j)->z;
+		}
+		else
+		{
+			minZ = MAPDATA->getTileData(i, j + 1)->z;
+		}
+	}
+
+	delta = MAPDATA->getTileData(i, j)->z - minZ;
+
+	for (int a = 0; a < delta; a++)
+	{
+		switch (MAPDATA->getTileData(i, j)->tileT)
+		{
+		case T_GRASS:
+			if (a == 0)
 			{
-			case T_GRASS:
-				if (a == 0)
-				{
-					IMAGEMANAGER->focusRender("블록2", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
-				}
-				else
-				{
-					IMAGEMANAGER->focusRender("블록3", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
-				}
-				break;
-			case T_ROCK:
-				IMAGEMANAGER->focusRender("블록3", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
-				break;
-			case T_SNOW:
-				IMAGEMANAGER->focusRender("블록4", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
-				break;
-			default:
-				break;
+				IMAGEMANAGER->focusRender("블록2", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
 			}
+			else
+			{
+				IMAGEMANAGER->focusRender("블록3", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
+			}
+			break;
+		case T_ROCK:
+			IMAGEMANAGER->focusRender("블록3", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
+			break;
+		case T_SNOW:
+			IMAGEMANAGER->focusRender("블록4", getMemDC(), MAPDATA->getTileData(i, j)->rc.left, MAPDATA->getTileData(i, j)->rc.top + (a + 1) * 16);
+			break;
+		default:
+			break;
 		}
 	}
 }

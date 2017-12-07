@@ -177,8 +177,8 @@ if (varName != var)\
 #else
 	#define WINSTARTX		100
 	#define WINSTARTY		100
-	#define WINSIZEX			640
-	#define WINSIZEY			480
+	#define WINSIZEX			960
+	#define WINSIZEY			720
 	#define WINSTYLE			WS_CAPTION | WS_SYSMENU
 #endif
 

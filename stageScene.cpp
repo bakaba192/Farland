@@ -123,12 +123,7 @@ void stageScene::update(void)
 void stageScene::render(void)
 {
 
-	_backGround[MAPDATA->getStageNumber() - 1]->render(getMemDC());
-
-	if (KEYMANAGER->isToggleKey(VK_F2))
-	{
-		Rectangle(getMemDC(), _clipingRc.left, _clipingRc.top, _clipingRc.right, _clipingRc.bottom);
-	}
+	//_backGround[MAPDATA->getStageNumber() - 1]->render(getMemDC());
 
 	_clipingRc = { 0 - FOCUSMANAGER->getFocusX() - 64,0 - FOCUSMANAGER->getFocusY() - 64,WINSIZEX - FOCUSMANAGER->getFocusX() + 64, WINSIZEY - FOCUSMANAGER->getFocusY() + 64 };
 
@@ -278,6 +273,11 @@ void stageScene::render(void)
 	}
 
 	IMAGEMANAGER->findImage("검은화면")->alphaRender(getMemDC(), _alpha);
+
+	if (KEYMANAGER->isToggleKey(VK_F2))
+	{
+		Rectangle(getMemDC(), _clipingRc.left, _clipingRc.top, _clipingRc.right, _clipingRc.bottom);
+	}
 }
 
 void stageScene::playerBehavior()//플레이어의 행동을 상태값에따라 제어하는 함수

@@ -61,6 +61,7 @@ public:
 
 	vector<POINT> Astar();
 
+	void pickTile();
 
 	void loadMap(int i);
 

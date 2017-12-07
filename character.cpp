@@ -25,7 +25,6 @@ HRESULT character::init(int x, int y, CharaName name, int lv)
 		_status.Exp = CHARADATA->getAlExp();
 		break;
 	default:
-		
 		break;
 	}
 

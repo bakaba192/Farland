@@ -78,9 +78,9 @@ void F_MAPDATA::showMoveRange(int x, int y, int range)
 	}
 }
 
-void F_MAPDATA::showSkillrange(int x, int y, int range, bool isAttack)
+void F_MAPDATA::showSkillrange(int x, int y, int range, bool isHeal)
 {
-	if (isAttack)
+	if (isHeal)
 	{
 		for (int i = 0; i < TILEMAXI; i++)
 		{
@@ -89,7 +89,7 @@ void F_MAPDATA::showSkillrange(int x, int y, int range, bool isAttack)
 
 				if (abs(x - i) + abs(y - j) <= range)
 				{
-					_map[i][j].tSELECT = S_FALSE2;
+					_map[i][j].tSELECT = S_TRUE2;
 				}
 			}
 		}
@@ -103,7 +103,7 @@ void F_MAPDATA::showSkillrange(int x, int y, int range, bool isAttack)
 
 				if (abs(x - i) + abs(y - j) <= range)
 				{
-					_map[i][j].tSELECT = S_TRUE2;
+					_map[i][j].tSELECT = S_FALSE2;
 				}
 			}
 		}
@@ -218,6 +218,7 @@ vector<POINT> F_MAPDATA::Astar()
 				if (ty < 0 || ty >= TILEMAXJ) continue;
 				if (_map[tx][ty].wayState == WAYSTATE::WAY_BLOCK) continue;
 				if (_map[tx][ty].wayState == WAYSTATE::WAY_CLOSE) continue;
+				if (abs(_map[tx][ty].z - tempNode->z) > 2) continue;
 
 				//오픈리스트에 없음.
 				if (_map[tx][ty].wayState == WAYSTATE::WAY_EMPTY)
@@ -245,6 +246,39 @@ vector<POINT> F_MAPDATA::Astar()
 	}
 
 	return vecBestWay;
+}
+
+void F_MAPDATA::pickTile()
+{
+	bool selectback = false;
+	//타일상에서 마우스 좌표의 위치.
+	float Fx = _ptMouse.x - FOCUSMANAGER->getFocusX() - WINSIZEX / 2;
+	float Fy = _ptMouse.y - FOCUSMANAGER->getFocusY();
+	float cursorX = ((Fx / TILEWIDTH) + (Fy / TILEHEIGHT));// / 2.0f;
+	float cursorY = ((Fy / TILEHEIGHT) - (Fx / TILEWIDTH));// / 2.0f;
+
+	for (int i = TILEMAXI - 1; i >= 0; i--)
+	{
+		for (int j = TILEMAXJ - 1; j >= 0; j--)
+		{
+			float tileI = (float)i -(float)(_map[i][j].z-2) / 2;
+			float tileJ = (float)j -(float)(_map[i][j].z-2) / 2;
+			
+			if ((tileI < cursorX) && (tileI + 1 > cursorX) &&
+				(tileJ < cursorY) && (tileJ + 1 > cursorY)	)
+			{
+				if (KEYMANAGER->isStayKeyDown(VK_SHIFT)&& !selectback)
+				{
+					selectback = true;
+				}
+				else
+				{
+					setPick(i, j);
+					return;
+				}
+			}
+		}
+	}
 }
 
 void F_MAPDATA::loadMap(int i)
@@ -280,10 +314,10 @@ void F_MAPDATA::loadMap(int i)
 			_map[i][j].pivotX = MAPDATA->getTileData(i, j)->x + TILEWIDTH / 2;
 			_map[i][j].pivotY = MAPDATA->getTileData(i, j)->y + TILEHEIGHT / 2;
 			_map[i][j].rc = RectMake(MAPDATA->getTileData(i, j)->x, MAPDATA->getTileData(i, j)->y - MAPDATA->getTileData(i, j)->z * 16, TILEWIDTH, TILEHEIGHT);
-			_map[i][j].poly[0] = { MAPDATA->getTileData(i,j)->pivotX - TILEWIDTH / 2, MAPDATA->getTileData(i,j)->pivotY }; //left
-			_map[i][j].poly[1] = { MAPDATA->getTileData(i,j)->pivotX, MAPDATA->getTileData(i,j)->pivotY - TILEHEIGHT / 2 }; //top
-			_map[i][j].poly[2] = { MAPDATA->getTileData(i,j)->pivotX + TILEWIDTH / 2, MAPDATA->getTileData(i,j)->pivotY }; //right
-			_map[i][j].poly[3] = { MAPDATA->getTileData(i,j)->pivotX, MAPDATA->getTileData(i,j)->pivotY + TILEHEIGHT / 2 }; //bottom
+			//_map[i][j].poly[0] = { MAPDATA->getTileData(i,j)->pivotX - TILEWIDTH / 2, MAPDATA->getTileData(i,j)->pivotY }; //left
+			//_map[i][j].poly[1] = { MAPDATA->getTileData(i,j)->pivotX, MAPDATA->getTileData(i,j)->pivotY - TILEHEIGHT / 2 }; //top
+			//_map[i][j].poly[2] = { MAPDATA->getTileData(i,j)->pivotX + TILEWIDTH / 2, MAPDATA->getTileData(i,j)->pivotY }; //right
+			//_map[i][j].poly[3] = { MAPDATA->getTileData(i,j)->pivotX, MAPDATA->getTileData(i,j)->pivotY + TILEHEIGHT / 2 }; //bottom
 			_map[i][j].classify = CL_NONE;//거기에 무엇이 있는가?
 			_map[i][j].tSELECT = S_NONE;//타일의 선택상태
 			if (_map[i][j].objIndex2 != OBJ2_NULL)
@@ -293,3 +327,5 @@ void F_MAPDATA::loadMap(int i)
 		}
 	}
 }
+
+

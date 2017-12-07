@@ -69,7 +69,7 @@ void F_TileMapTool::update(void)
 
 	FOCUSMANAGER->FocusByMouse();
 
-	pickTile();
+	MAPDATA->pickTile();
 
 	setTilePosUpdate();
 
@@ -610,7 +610,9 @@ void F_TileMapTool::setTilePosUpdate()
 	}
 }
 
+//Æó±â
 void F_TileMapTool::pickTile() {
+	/*
 	bool selectback = false;
 	if (!KEYMANAGER->isStayKeyDown(VK_SHIFT))
 	{
@@ -660,6 +662,7 @@ void F_TileMapTool::pickTile() {
 			}
 		}
 	}
+	*/
 }
 
 void F_TileMapTool::showObject(int i, int j)
